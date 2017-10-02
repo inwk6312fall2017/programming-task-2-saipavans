@@ -13,11 +13,11 @@ class CrimeLister():
                 line_content = line_content.split(",")
                 crime_type = line_content[len(line_content)-1]
                 crime_id = line_content[len(line_content)-2]
-                self.crime_counter[crime_type] = self.crime_counter.get(crime_type, 0) + 1
-                crime_record = [crime_type, crime_id]
-                self.crime_records.append(crime_record)
-        for crime in self.crime_records:
-            crime.append(self.crime_counter[crime[0]])
+                crime_key = crime_type + "," + crime_id
+                self.crime_counter[crime_key] = self.crime_counter.get(crime_key + "", 0) + 1
+        for crime in self.crime_counter.keys():
+            crime_type_id = crime.split(",")
+            self.crime_records.append([crime_type_id[0],crime_type_id[1],self.crime_counter[crime]])
 
 
 
