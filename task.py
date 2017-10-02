@@ -1,3 +1,5 @@
+
+
 class CrimeLister():
 
     crime_records = []
@@ -20,12 +22,17 @@ class CrimeLister():
             self.crime_records.append([crime_type_id[0],crime_type_id[1],self.crime_counter[crime]])
 
 
+    def print_crime_records(self):
+        print("CRIME TYPE".ljust(30) + "CRIME ID".ljust(10) + "CRIME COUNT".ljust(10)) ## HEADER PRINT
+        print("-"*50)
+        for record in self.crime_records:
+            print(str(record[0]).ljust(30) + str(record[1]).ljust(10) + str(record[2]).ljust(10))
 
 def main():
     filepath = "./Crime.csv"
     crime_lister = CrimeLister(filepath)
     crime_lister.populate_record()
-    print(crime_lister.crime_records)
+    crime_lister.print_crime_records()
 
 if __name__ == '__main__':
     main()
